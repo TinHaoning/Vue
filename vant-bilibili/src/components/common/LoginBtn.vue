@@ -1,12 +1,17 @@
 <template>
-    <div class="btnwrap">
+    <div class="btnwrap" @click="registerClick">
         <div class="LoginBtn">{{Btntext}}</div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['Btntext']
+    props: ['Btntext'],
+    methods: {
+        registerClick() {
+            this.$emit('registerSubmit')
+        }
+    },
 }
 </script>
 

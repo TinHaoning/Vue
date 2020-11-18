@@ -20,9 +20,20 @@ export default {
         }
     },
     props:['label','placeholder','type','rule'],
+    methods:{
+        handlerulg() {
+            const rue = new RegExp(this.rule)
+            // console.log(rue); 
+            if(rue.test(this.content)) {
+                // console.log('正则校验成功');
+                this.$emit('inputChange',this.content)
+            }
+        }
+    },
     watch:{
         content(){
-            console.log('监听成功');
+            this.handlerulg()
+            // console.log('监听成功');
         }
     }
 
