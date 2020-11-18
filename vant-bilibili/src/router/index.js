@@ -16,9 +16,9 @@ const routes = [
     component: () => import('@/views/register.vue')
   },
   {
-    path: '/Login',
+    path: '/login',
     name: '登陆页面',
-    component: () => import('@/views/Login.vue')
+    component: () => import('@/views/login.vue')
   },
   {
     path: '/userinfo',
