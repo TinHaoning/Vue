@@ -7,6 +7,10 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 Vue.use(Vant)
 
+// 引入轻提示
+import { Toast } from 'vant'
+Vue.prototype.$msg = Toast
+
 // 引入封装好的axios实例
 import http from '../http'
 // prototype全局挂载http
