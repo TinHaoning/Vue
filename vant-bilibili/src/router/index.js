@@ -1,36 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
-
 Vue.use(VueRouter)
+//单一职责，导入路由
+import routes from './routes'
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/register',
-    name: '注册页面',
-    component: () => import('@/views/register.vue')
-  },
-  {
-    path: '/login',
-    name: '登陆页面',
-    component: () => import('@/views/login.vue')
-  },
-  {
-    path: '/userinfo',
-    name: '个人中心',
-    component: () => import('@/views/userinfo.vue')
-  }
-]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  // 如果后台没有返回token或id
+ if((!localStorage.getItem('token') || !localStorage.getItem('id')) && to.meta.istoken == true) {
+   router.push('/login')
+   Vue.prototype.$msg.fail('请重新登录')
+   return
+ }
+ next()
 })
 
 export default router
