@@ -12,6 +12,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  // 如果后台没有返回token或id
  if((!localStorage.getItem('token') || !localStorage.getItem('id')) && to.meta.istoken == true) {
    router.push('/login')
    Vue.prototype.$msg.fail('请重新登录')

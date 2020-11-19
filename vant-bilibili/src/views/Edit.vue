@@ -2,7 +2,7 @@
   <div v-if="model" class="editViews">
       <div style="margin-bottom:10.418px;"><nav-bar ref="navbar"></nav-bar></div>
       <div class="uploadfile">
-          <div class="uploadimg"><van-uploader preview-size="375px" :after-read="afterRead" /></div>
+          <div class="uploadimg"><van-uploader preview-size="100vw" :after-read="afterRead" /></div>
           <edit-banner left="头像">
               <img :src="model.user_img"  slot="right" alt="" v-if="model.user_img">
               <img src="@/assets/default_img.jpg"  slot="right" alt="" v-else>

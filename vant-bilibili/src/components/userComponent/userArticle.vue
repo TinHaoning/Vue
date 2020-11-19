@@ -23,11 +23,11 @@ export default {
     display: flex;
     align-items: center;
     background-color: white;
-    height: 42px;
-    padding: 0 11px;
-    border-top: 1px solid #ddd;
+    height: 11.2vw;
+    padding: 0 2.933vw;
+    border-top: 0.267vw solid #ddd;
     span{
-        margin: 0 8px ;
+        margin: 0 2.133vw ;
         color:#777;
     }
 }
