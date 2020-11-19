@@ -3,7 +3,10 @@
     <!-- 头像、粉丝关注获赞、编辑资料btn -->
     <div>
       <!-- 头像 -->
-      <div><img class="user_img" src="@/assets/default_img.jpg" alt="" /></div>
+      <div class="user_img">
+        <img :src="userInfo.user_img" alt="" v-if="userInfo.user_img" />
+        <img src="@/assets/default_img.jpg" alt v-else />
+      </div>
       <!-- 粉丝关注获赞、编辑资料btn -->
       <div class="user_edit">
         <div>
@@ -23,23 +26,23 @@
           </p>
         </div>
         <div>
+        <!-- <div @click="$router.push('/edit')"> -->
           <div class="user_editBtn">编辑资料</div>
         </div>
       </div>
     </div>
     <!-- 昵称、个人签名 -->
     <div>
-      <h2>Kingsman</h2>
-      <p>这个人很懒，什么都没写</p>
+      <h2>{{userInfo.name}}</h2>
+      <p v-if="userInfo.user_desc">{{userInfo.user_desc}}</p>
+      <p v-else>这个人很神秘，什么都没有写</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {};
-  },
+  props: ["userInfo"],
 };
 </script>
 
@@ -51,9 +54,11 @@ export default {
     display: flex;
     .user_img {
       margin-right: 5.333vw;
-      height: 22.667vw;
-      width: 22.667vw;
-      border-radius: 50%;
+      img {
+        height: 23.611vw;
+        width: 23.611vw;
+        border-radius: 50%;
+      }
     }
     .user_edit {
       flex: 1;
@@ -99,17 +104,17 @@ export default {
       }
     }
   }
-  >div:nth-child(2) {
-      h2 {
-          margin: 10px 0 3px 0;
-          font-weight: 400;
-      }
-      p {
-          color: #aaa;
-          padding: 0;
-          margin:8px 0 0;
-          font-size: 13px;
-      }
+  > div:nth-child(2) {
+    h2 {
+      margin: 10px 0 3px 0;
+      font-weight: 400;
+    }
+    p {
+      color: #aaa;
+      padding: 0;
+      margin: 8px 0 0;
+      font-size: 13px;
+    }
   }
 }
 </style>

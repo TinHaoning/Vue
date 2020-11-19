@@ -8,7 +8,6 @@
     <!-- 姓名输入框 -->
     <login-text label="姓名" 
     placeholder="请输入姓名"
-    rule="^.{6,16}$"
     @inputChange="res => model.name = res"    
     style="margin:4.167vw 0">
     </login-text>
@@ -16,7 +15,6 @@
     <!-- 用户名输入框 -->
     <login-text label="用户名"
     placeholder="请输入用户名"
-    rule="^.{6,16}$" 
     @inputChange="res => model.username = res"    
     ></login-text>
 
@@ -24,7 +22,6 @@
     <login-text label="密码"
     placeholder="请输入密码"
     type="password"
-    rule="^.{6,16}$"
     @inputChange="res => model.password = res"    
     ></login-text>
 
@@ -39,28 +36,29 @@ import LoginText from '@/components/common/LoginText.vue'
 import LoginBtn from '@/components/common/LoginBtn.vue'
 
 export default {
+    data() {
+        return {
+            model:{}
+            
+        }
+    },
     components: {
         LoginTop,
         LoginText,
         LoginBtn,
-    },
-    data() {
-        return {
-            model:{
-                name: '',
-                username:'',
-                password:'',
-            }
-            
-        }
     },
     methods:{
         async registerSubmit() {
             let rulg = /^.{6,16}/
             if(rulg.test(this.model.name) && rulg.test(this.model.username) && rulg.test(this.model.password)){
                 const res =  await this.$http.post('/register',this.model)
-                // console.log(res);
                 this.$msg.fail(res.data.msg)
+                console.log(res);
+                localStorage.setItem('id',res.data.id)
+                localStorage.setItem('token',res.data.objtoken)
+                setTimeout(() => {
+                    this.$router.push('/userInfo')
+                },2000)
             }else{
                 this.$msg.fail('格式不正确,请重新输入!')
             }
