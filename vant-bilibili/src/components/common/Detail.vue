@@ -19,7 +19,7 @@ export default {
 <style lang="less" scoped>
 .detailItem{
     p{
-        font-size: 12px;
+        font-size: 3.2vw;
     }
 }
 </style>
