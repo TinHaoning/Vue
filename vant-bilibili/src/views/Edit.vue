@@ -86,6 +86,7 @@ export default {
       this.UserUpdate();
       this.$refs.navbar.NavInit();
     },
+    // 数据更新
     async UserUpdate() {
       const res = await this.$http.post(
         "/update/" + localStorage.getItem("id"),
@@ -95,16 +96,19 @@ export default {
         this.$msg.fail("修改成功");
       }
     },
+    // 双向绑定修改昵称
     confirmClick() {
       this.model.name = this.content;
       this.UserUpdate();
       this.content = "";
     },
+    // 修改个性签名
     textareaClick() {
       this.model.user_desc = this.content;
       this.UserUpdate();
       this.content = "";
     },
+    // 性别选择
     onSelect(data) {
       this.model.gender = data.val;
       this.UserUpdate();
