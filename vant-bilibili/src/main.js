@@ -16,6 +16,8 @@ import http from '../http'
 // prototype全局挂载http
 Vue.prototype.$http = http
 
+import '@/assets/style.css'
+
 Vue.config.productionTip = false
 
 new Vue({
