@@ -36,4 +36,9 @@ export default [
       name: '登陆页面',
       component: () => import('@/views/Article.vue'),
     },
+    {
+      path: '/editcategory',
+      name: '用户选择模块',
+      component: () => import('@/views/EditCategory.vue'),
+    },
   ]
