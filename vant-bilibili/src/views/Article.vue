@@ -45,8 +45,8 @@
 <script>
 import NavBar from '@/components/common/Navbar.vue'
 import cover from './cover'
-// import commentTitle from '@/components/article/commentTitle.vue'
-// import comment from '@/components/article/comment.vue'
+import commentTitle from '@/components/article/commentTitle.vue'
+import comment from '@/components/article/comment.vue'
 export default {
     data() {
         return {
