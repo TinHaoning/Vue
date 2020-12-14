@@ -1,35 +1,30 @@
 <template>
-    <div class="user-article">
-        <div>
-            <span>动态</span>
-            <span>视频</span>
-        </div>
-        <div></div>
-    </div>
+  <div class="user-article">
+      <div>
+          <span>动态</span>
+          <span>视频</span>
+      </div>
+      <div></div>
+  </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
 
-        };
-    }
-};
+}
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .user-article{
     display: flex;
     align-items: center;
     background-color: white;
-    height: 11.2vw;
-    padding: 0 2.933vw;
-    border-top: 0.267vw solid #ddd;
+    height: 11.111vw;
+    padding: 0 2.778vw;
+    border-top: 0.278vw solid #ddd;
     span{
-        margin: 0 2.133vw ;
-        color:#777;
+        margin: 0 1.944vw;
+        color: #777;
     }
 }
-
 </style>
