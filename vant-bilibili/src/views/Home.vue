@@ -2,15 +2,9 @@
   <div class="home" v-if="category">
     <nav-bar></nav-bar>
     <div class="categorytab">
-      <div class="category-ico" @click="$router.push('/editcategory')">
-        <van-icon name="setting-o" />
-      </div>
+      <div class="category-ico" @click="$router.push('/editcategory')"><van-icon name="setting-o" /></div>
       <van-tabs v-model="active" swipeable sticky animated>
-        <van-tab
-          v-for="(item, index) in category"
-          :key="index"
-          :title="item.title"
-        >
+        <van-tab v-for="(item,index) in category" :key="index" :title="item.title">
           <van-list
             v-model="item.loading"
             :immediate-check="false"
@@ -22,7 +16,7 @@
               <cover
                 class="detailitem"
                 :detailitem="categoryitem"
-                v-for="(categoryitem, categoryindex) in item.list"
+                v-for="(categoryitem,categoryindex) in item.list"
                 :key="categoryindex"
               />
             </div>
@@ -40,24 +34,24 @@ export default {
   data() {
     return {
       category: [],
-      active: 0,
+      active: 0
     };
   },
   components: {
     NavBar,
-    cover,
+    cover
   },
   activated() {
-    if (localStorage.getItem("newCat")) {
-      let newCat = JSON.parse(localStorage.getItem("newCat"));
-      this.category = this.changeCategory(newCat);
-      this.selectArticle();
+    if(localStorage.getItem('newCat')) {
+        let newCat = JSON.parse(localStorage.getItem('newCat'))
+        this.category = this.changeCategory(newCat)
+        this.selectArticle();
     }
   },
   methods: {
     async selectCategory() {
-      if (localStorage.getItem("newCat")) {
-        return;
+      if(localStorage.getItem('newCat')) {
+        return
       }
       const res = await this.$http.get("/category");
       this.category = this.changeCategory(res.data);
@@ -79,8 +73,8 @@ export default {
       const res = await this.$http.get("/detail/" + categoryitem._id, {
         params: {
           page: categoryitem.page,
-          pagesize: categoryitem.pagesize,
-        },
+          pagesize: categoryitem.pagesize
+        }
       });
       categoryitem.list.push(...res.data);
       categoryitem.loading = false;
@@ -98,7 +92,7 @@ export default {
     categoryItem() {
       const categoryitem = this.category[this.active];
       return categoryitem;
-    },
+    }
   },
   watch: {
     active() {
@@ -106,11 +100,11 @@ export default {
       if (!categoryitem.list.length) {
         this.selectArticle();
       }
-    },
+    }
   },
   created() {
     this.selectCategory();
-  },
+  }
 };
 </script>
 
@@ -127,9 +121,9 @@ export default {
     width: 45%;
   }
 }
-.categorytab {
+.categorytab{
   position: relative;
-  .category-ico {
+  .category-ico{
     position: absolute;
     z-index: 5;
     right: 0;
@@ -138,4 +132,5 @@ export default {
     background-color: white;
   }
 }
+
 </style>
