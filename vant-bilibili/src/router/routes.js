@@ -3,6 +3,9 @@ export default [
     {
       path: '/',
       name: 'Home',
+      meta:{
+        keepalive:true
+      },
       component: Home
     },
     {
