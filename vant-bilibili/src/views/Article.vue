@@ -159,11 +159,11 @@ export default {
             }
         }
     },
-    // created() {
-    //      this.articleitemData()
-    //      this.commendData()
-    //      this.collectionInit()
-    // },
+    created() {
+         this.articleitemData()
+         this.commendData()
+         this.collectionInit()
+    },
     watch:{
         $route() {
             this.articleitemData()
