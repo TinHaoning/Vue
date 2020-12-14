@@ -1,6 +1,6 @@
 <template>
   <div v-if="model" class="editViews">
-      <div style="margin-bottom:10.418px;"><nav-bar ref="navbar"></nav-bar></div>
+      <div style="margin-bottom:2.778vw;"><nav-bar ref="navbar"></nav-bar></div>
       <div class="uploadfile">
           <div class="uploadimg"><van-uploader preview-size="100vw" :after-read="afterRead" /></div>
           <edit-banner left="头像">
@@ -52,101 +52,94 @@
 </template>
 
 <script>
-import NavBar from "@/components/common/Navbar.vue";
-import editBanner from "@/components/common/editBanner.vue";
+import NavBar from '@/components/common/Navbar.vue'
+import editBanner from '@/components/common/editBanner.vue'
 export default {
-  components: {
-    NavBar,
-    editBanner,
-  },
-  data() {
-    return {
-      model: {},
-      show: false,
-      textshow: false,
-      gendershow: false,
-      content: "",
-      actions: [
-        { name: "男", val: 1 },
-        { name: "女", val: 0 },
-      ],
-    };
-  },
-  methods: {
-    //进入组件调取数据渲染页面
-    async selectUser() {
-      const res = await this.$http.get("/user/" + localStorage.getItem("id"));
-      this.model = res.data[0];
+    data() {
+        return {
+            model:{},
+            show:false,
+            textshow:false,
+            gendershow:false,
+            content:'',
+            actions: [
+                { name: '男',val:1 },
+                { name: '女',val:0 },
+            ],
+        }
     },
-    async afterRead(file) {
-      const fromdata = new FormData();
-      fromdata.append("file", file.file);
-      const res = await this.$http.post("/upload", fromdata);
-      this.model.user_img = res.data.url;
-      this.UserUpdate();
-      this.$refs.navbar.NavInit();
+    components:{
+        NavBar,
+        editBanner
     },
-    // 数据更新
-    async UserUpdate() {
-      const res = await this.$http.post(
-        "/update/" + localStorage.getItem("id"),
-        this.model
-      );
-      if (res.data.code == 200) {
-        this.$msg.fail("修改成功");
-      }
+    methods:{
+        //进入组件调取数据渲染页面
+        async selectUser() {
+             const res =  await this.$http.get('/user/' + localStorage.getItem('id'))
+            this.model = res.data[0] 
+        },
+       async afterRead(file) {
+           const fromdata = new FormData()
+           fromdata.append('file',file.file)
+           const res =  await this.$http.post('/upload',fromdata)
+           this.model.user_img = res.data.url
+           this.UserUpdate()
+           this.$refs.navbar.NavInit()
+       },
+       async UserUpdate() {
+           const res = await this.$http.post('/update/' + localStorage.getItem('id'),this.model)
+           if(res.data.code == 200){
+               this.$msg.fail('修改成功')
+           } 
+       },
+       confirmClick() {
+           this.model.name =  this.content
+           this.UserUpdate()
+           this.content = ''
+       },
+       textareaClick() {
+           this.model.user_desc = this.content
+           this.UserUpdate()
+           this.content = ''
+       },
+       onSelect(data) {
+           this.model.gender = data.val
+           this.UserUpdate()
+           this.gendershow = false
+       }
     },
-    // 双向绑定修改昵称
-    confirmClick() {
-      this.model.name = this.content;
-      this.UserUpdate();
-      this.content = "";
-    },
-    // 修改个性签名
-    textareaClick() {
-      this.model.user_desc = this.content;
-      this.UserUpdate();
-      this.content = "";
-    },
-    // 性别选择
-    onSelect(data) {
-      this.model.gender = data.val;
-      this.UserUpdate();
-      this.gendershow = false;
-    },
-  },
-  created() {
-    this.selectUser();
-  },
-};
+    created(){
+        this.selectUser()
+    }
+}
 </script>
 
-<style lang="less" scoped>
-.editViews a {
-  color: #333;
+<style scoped lang="less">
+.editViews a{
+    color: #333;
 }
-.editViews img {
-  height: 12.8vw;
-  width: 12.8vw;
-  border-radius: 50%;
+.editViews img{
+    height: 12.778vw;
+    width: 12.778vw;
+    border-radius: 50%;
 }
-.uploadfile {
-  overflow: hidden;
-  position: relative;
-  .uploadimg {
-    opacity: 0;
-    position: absolute;
-  }
+.uploadfile{
+    overflow: hidden;
+    position: relative;
+    .uploadimg{
+        opacity: 0;
+        position: absolute;
+    }
 }
-.editback {
-  margin-top: 5.333vw;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  color: #999;
-  padding: 4vw 0;
-  font-size: 4vw;
+.editback{
+    margin-top: 5.556vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    color: #999;
+    padding: 4.167vw 0;
+    font-size: 4vw;
 }
 </style>
