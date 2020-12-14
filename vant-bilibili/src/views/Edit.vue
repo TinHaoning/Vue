@@ -53,7 +53,7 @@
 
 <script>
 import NavBar from "@/components/common/Navbar.vue";
-import editBanner from "@/components/userComponent/editBanner.vue";
+import editBanner from "@/components/common/editBanner.vue";
 export default {
   components: {
     NavBar,
