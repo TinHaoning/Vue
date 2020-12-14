@@ -31,4 +31,9 @@ export default [
         istoken: true
     }
     },
+    {
+      path: '/article/:id',
+      name: '登陆页面',
+      component: () => import('@/views/Article.vue'),
+    },
   ]
