@@ -30,7 +30,6 @@ export default {
     };
   },
   methods:{
-    
     async NavInit() {
       if(localStorage.getItem('token')){
         const res = await this.$http.get('/user/' + localStorage.getItem('id'))

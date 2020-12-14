@@ -5,10 +5,24 @@
     <div>
       <div></div>
       <van-tabs v-model="active" swipeable sticky animated>
-        <van-tab v-for="(item, index) in category" :key="index" :title="item.title">
-          <van-list v-model="item.loading" :finished="item.finished" finished-text="我也是有底线的" @load="onLoad">
+        <van-tab
+          v-for="(item, index) in category"
+          :key="index"
+          :title="item.title"
+        >
+          <van-list
+            v-model="item.loading"
+            :finished="item.finished"
+            finished-text="我也是有底线的"
+            @load="onLoad"
+          >
             <div class="detailparent">
-              <detail class="detailitem" :detailitem="categoryitem" v-for="(categoryitem, categoryindex) in item.list" :key="categoryindex" />
+              <cover
+                class="detailitem"
+                :detailitem="categoryitem"
+                v-for="(categoryitem, categoryindex) in item.list"
+                :key="categoryindex"
+              />
             </div>
           </van-list>
         </van-tab>
@@ -19,7 +33,7 @@
 
 <script>
 import NavBar from '@/components/common/Navbar.vue'
-import Detail from '@/components/common/Detail.vue'
+import cover from "./cover";
 
 export default {
   data() {
@@ -30,7 +44,7 @@ export default {
   },
   components: {
     NavBar,
-    Detail,
+    cover
   },
   methods: {
     // 获取分类列表菜单
