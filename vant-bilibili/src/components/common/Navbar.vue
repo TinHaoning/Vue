@@ -10,7 +10,12 @@
       </p>
     </div>
     <div>
-      <img :src="imgUrl" alt="" @click="$router.push('/userinfo')" v-if="imgUrl" />
+      <img
+        :src="imgUrl"
+        alt=""
+        @click="$router.push('/userinfo')"
+        v-if="imgUrl"
+      />
       <img
         src="@/assets/default_img.jpg"
         alt=""
@@ -26,21 +31,21 @@
 export default {
   data() {
     return {
-      imgUrl:'',
+      imgUrl: "",
     };
   },
-  methods:{
+  methods: {
     async NavInit() {
-      if(localStorage.getItem('token')){
-        const res = await this.$http.get('/user/' + localStorage.getItem('id'))
+      if (localStorage.getItem("token")) {
+        const res = await this.$http.get("/user/" + localStorage.getItem("id"));
         // console.log(res);
-        this.imgUrl = res.data[0].user_img
+        this.imgUrl = res.data[0].user_img;
       }
-    }
+    },
   },
   mounted() {
-    this.NavInit()
-  }
+    this.NavInit();
+  },
 };
 </script>
 
