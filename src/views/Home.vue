@@ -13,12 +13,12 @@
             @load="onLoad"
           >
             <div class="detailparent">
-              <!-- <cover
+              <cover
                 class="detailitem"
                 :detailitem="categoryitem"
                 v-for="(categoryitem,categoryindex) in item.list"
                 :key="categoryindex"
-              /> -->
+              />
             </div>
           </van-list>
         </van-tab>
@@ -29,7 +29,7 @@
 
 <script>
 import NavBar from "@/components/common/Navbar.vue";
-// import cover from "./cover";
+import cover from "./cover";
 export default {
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
   },
   components: {
     NavBar,
-    // cover
+    cover
   },
   activated() {
     if(localStorage.getItem('newCat')) {
