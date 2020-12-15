@@ -6,9 +6,9 @@
             <p @click="handleCategoryClick(index)" v-for="(item,index) in newCat" :key="index">{{item.title}}</p>
         </div>
      <van-divider dashed :style="{ color: '#ee0a24', borderColor: '#ee0a24', padding: '0 16px' }">已删除栏目</van-divider>
-        <!-- <div class="new-category delcategory">
+        <div class="new-category delcategory">
             <p @click="deleteCategoryClick(index)" v-for="(item,index) in delCat" :key="index">{{item.title}}</p>
-        </div> -->
+        </div>
   </div>
 </template>
 
