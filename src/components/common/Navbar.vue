@@ -6,11 +6,11 @@
       <div>
           <div> <van-icon name="search" class="iconNav"/></div>
       </div>
-      <div>
+      <!-- <div>
           <img :src="imgUrl" alt="" @click="$router.push('/userinfo')" v-if="imgUrl">
           <img  src="@/assets/default_img.jpg" alt="" @click="$router.push('/login')"  v-else>
           <div>下载App</div>
-      </div>
+      </div> -->
   </div>
 </template>
 
