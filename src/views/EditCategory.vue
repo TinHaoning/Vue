@@ -2,9 +2,9 @@
   <div>
       <nav-bar></nav-bar>
      <van-divider dashed :style="{ color: '#1a73e8', borderColor: '#1a73e8', padding: '0 16px' }">现有栏目</van-divider>
-        <div class="new-category newcategory">
+        <!-- <div class="new-category newcategory">
             <p @click="handleCategoryClick(index)" v-for="(item,index) in newCat" :key="index">{{item.title}}</p>
-        </div>
+        </div> -->
      <van-divider dashed :style="{ color: '#ee0a24', borderColor: '#ee0a24', padding: '0 16px' }">已删除栏目</van-divider>
         <div class="new-category delcategory">
             <p @click="deleteCategoryClick(index)" v-for="(item,index) in delCat" :key="index">{{item.title}}</p>
